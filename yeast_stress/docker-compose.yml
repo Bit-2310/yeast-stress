@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  fastqc:
+    image: staphb/fastqc:latest
+    container_name: fastqc_service
+    volumes:
+      - ./data:/project/data
+      - ./results:/project/results
+    stdin_open: true
+    tty: true
+
+  hisat2:
+    image: quay.io/biocontainers/hisat2:2.2.1--h87f3376_3
+    container_name: hisat2_service
+    volumes:
+      - ./data:/project/data
+      - ./results:/project/results
+    stdin_open: true
+    tty: true
+
+  samtools:
+    image: quay.io/biocontainers/samtools:1.15--h1170115_0
+    container_name: samtools_service
+    volumes:
+      - ./data:/project/data
+      - ./results:/project/results
+    stdin_open: true
+    tty: true
